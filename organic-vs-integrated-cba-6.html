@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More Inputs, Less Profit — Organic vs Integrated Farming Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16231A;
+    --paper:#EEF0E6;
+    --paper-alt:#E4E8D9;
+    --organic:#3F6B49;
+    --organic-soft:#DCE6DC;
+    --integrated:#A9672F;
+    --integrated-soft:#EFE0CE;
+    --line:#C7CBB6;
+    --muted:#5B6459;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .wide{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  a{color:var(--organic);}
+
+  /* ---------- Header / Hero ---------- */
+  header.hero{
+    padding:88px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+
+  header.hero h1,
+  header.hero .subtitle{
+    text-align:center;
+  }
+
+  .kicker{
+    font-size:15px;
+    color:var(--muted);
+    margin-bottom:18px;
+  }
+
+  h1{
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  h1 .title-main{
+    display:block;
+    font-size:clamp(34px, 5.6vw, 64px);
+  }
+  h1 .title-sub{
+    display:block;
+    font-size:clamp(18px, 2.4vw, 26px);
+    font-weight:400;
+    font-style:italic;
+    color:var(--muted);
+    margin-top:10px;
+    letter-spacing:0;
+  }
+
+  .subtitle{
+    margin-top:22px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:19px;
+    color:var(--muted);
+    max-width:56ch;
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-style:italic;
+  }
+
+  .author-line{
+    margin-top:32px;
+    font-size:14px;
+    color:var(--muted);
+  }
+
+  /* ---------- Hero ROI visual ---------- */
+  .roi-hero{
+    margin-top:52px;
+  }
+
+  .roi-hero .roi-caption{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+
+  .diverge-row{
+    display:grid;
+    grid-template-columns:88px 1fr 70px;
+    align-items:center;
+    gap:14px;
+    margin-bottom:10px;
+  }
+
+  .diverge-label{
+    font-size:14px;
+    font-weight:600;
+  }
+  .diverge-label.organic{color:var(--organic);}
+  .diverge-label.integrated{color:var(--integrated);}
+
+  .diverge-track{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    height:20px;
+    position:relative;
+  }
+  .diverge-track::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-6px;
+    bottom:-6px;
+    width:1px;
+    background:var(--ink);
+    opacity:0.5;
+  }
+  .diverge-left{display:flex; justify-content:flex-end;}
+  .diverge-right{display:flex; justify-content:flex-start;}
+  .diverge-bar{height:100%;}
+  .diverge-bar.organic{background:var(--organic);}
+  .diverge-bar.integrated{background:var(--integrated);}
+
+  .diverge-value{
+    font-size:14px;
+    font-weight:600;
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .roi-zero-label{
+    display:grid;
+    grid-template-columns:88px 1fr 70px;
+    gap:14px;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .roi-zero-label span{text-align:center;}
+
+  /* ---------- Sections ---------- */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:10px;
+  }
+
+  h2{
+    font-size:28px;
+    margin-bottom:22px;
+    letter-spacing:-0.01em;
+  }
+
+  p{margin:0 0 16px;}
+  p:last-child{margin-bottom:0;}
+
+  .lede{
+    font-size:19px;
+    max-width:58ch;
+  }
+
+  blockquote{
+    margin:28px 0 0;
+    padding-left:20px;
+    border-left:2px solid var(--organic);
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-style:italic;
+    color:var(--ink);
+    max-width:52ch;
+  }
+
+  ul{padding-left:20px; margin:0 0 16px;}
+  li{margin-bottom:6px;}
+
+  /* ---------- Methodology table ---------- */
+  table.formula{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+    font-size:15px;
+  }
+  table.formula th, table.formula td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.formula th{color:var(--muted); font-weight:600; font-size:13px;}
+
+  /* ---------- Compare (split) layout ---------- */
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    margin-top:8px;
+  }
+  .col{
+    padding:26px 28px;
+  }
+  .col-organic{
+    background:var(--organic-soft);
+    border-right:1px solid var(--paper);
+  }
+  .col-integrated{
+    background:var(--integrated-soft);
+  }
+  .col h3{
+    font-size:18px;
+    margin-bottom:16px;
+  }
+  .col-organic h3{color:var(--organic);}
+  .col-integrated h3{color:var(--integrated);}
+
+  table.data{
+    width:100%;
+    border-collapse:collapse;
+    font-size:15px;
+  }
+  table.data td{
+    padding:7px 0;
+    border-bottom:1px solid rgba(22,35,26,0.12);
+  }
+  table.data td:last-child{
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+  table.data tr.total td{
+    font-weight:700;
+    border-bottom:none;
+    padding-top:10px;
+  }
+
+  /* ---------- Simple total bars ---------- */
+  .totalbar-block{margin-top:20px;}
+  .totalbar-row{margin-bottom:14px;}
+  .totalbar-row .lbl{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:5px;
+  }
+  .totalbar-track{
+    height:10px;
+    background:rgba(22,35,26,0.08);
+  }
+  .totalbar-fill{height:100%;}
+  .totalbar-fill.organic{background:var(--organic);}
+  .totalbar-fill.integrated{background:var(--integrated);}
+
+  /* ---------- Economic performance summary table ---------- */
+  table.summary{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:32px;
+    font-size:15px;
+  }
+  table.summary th, table.summary td{
+    padding:12px;
+    border-bottom:1px solid var(--line);
+    text-align:right;
+  }
+  table.summary th:first-child, table.summary td:first-child{text-align:left;}
+  table.summary th{
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+  }
+  table.summary th.organic{color:var(--organic);}
+  table.summary th.integrated{color:var(--integrated);}
+  table.summary td.strong{font-weight:700;}
+
+  /* ---------- Field images ---------- */
+  .field-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:8px;
+  }
+  .field-placeholder{
+    aspect-ratio:4/3;
+    border:1px dashed var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .field-placeholder.organic{border-color:var(--organic);}
+  .field-placeholder.integrated{border-color:var(--integrated);}
+
+  /* ---------- SDG table ---------- */
+  table.sdg{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+    font-size:15px;
+  }
+  table.sdg td{
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  table.sdg td:first-child{
+    width:220px;
+    font-weight:600;
+    padding-right:20px;
+  }
+
+  /* ---------- Findings two-up (plain, no color split) ---------- */
+  .findings{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:8px;
+  }
+  .findings h3{font-size:16px; margin-bottom:12px;}
+  .findings .organic-h{color:var(--organic);}
+  .findings .integrated-h{color:var(--integrated);}
+
+  /* ---------- Tools list ---------- */
+  .tools-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px 32px;
+    margin-top:8px;
+    list-style:none;
+    padding:0;
+  }
+  .tools-list li{
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+
+  footer{
+    padding:56px 0 88px;
+    text-align:left;
+  }
+  footer .name{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+  }
+  footer .role{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:4px;
+  }
+
+  @media (max-width:680px){
+    h1 .title-main{font-size:28px;}
+    h1 .title-sub{font-size:15px;}
+    .compare, .findings, .field-grid{grid-template-columns:1fr;}
+    .col-organic{border-right:none; border-bottom:1px solid var(--paper);}
+    .tools-list{grid-template-columns:1fr;}
+    section{padding:48px 0;}
+    header.hero{padding:56px 0 40px;}
+    .diverge-row, .roi-zero-label{grid-template-columns:66px 1fr 56px; gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap" style="max-width:1100px;">
+    <h1><span class="title-main">More Inputs Less Profit</span><span class="title-sub">The Economics of Organic vs Integrated Farming of Smallholders</span></h1>
+    <p class="subtitle">Cost-benefit comparison of organic vs integrated farming systems, smallholder leafy vegetable production.</p>
+    <div class="roi-hero">
+      <div class="roi-caption">Return on investment, by farming system</div>
+
+      <div class="diverge-row">
+        <span class="diverge-label organic">Organic</span>
+        <div class="diverge-track">
+          <div class="diverge-left"></div>
+          <div class="diverge-right"><div class="diverge-bar organic" style="width:100%"></div></div>
+        </div>
+        <span class="diverge-value">+19.9%</span>
+      </div>
+
+      <div class="diverge-row">
+        <span class="diverge-label integrated">Integrated</span>
+        <div class="diverge-track">
+          <div class="diverge-left"><div class="diverge-bar integrated" style="width:92.5%"></div></div>
+          <div class="diverge-right"></div>
+        </div>
+        <span class="diverge-value">−18.4%</span>
+      </div>
+
+      <div class="roi-zero-label"><span></span><span>0%</span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Executive summary</div>
+    <p class="lede">Integrated farming cost 23% more to run than organic, and returned a negative ROI.</p>
+    <p>This project runs a cost–benefit analysis on <strong>organic</strong> vs <strong>integrated</strong> farming systems, using cost and yield data for two smallholder crops, amaranth and corchorus. Three metrics: net benefit, ROI, and benefit-cost ratio.</p>
+    <blockquote>Integrated spent 23% more and yielded 16% less. Its ROI: −18.4%, against +19.9% for organic.</blockquote>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Objective</div>
+    <h2>Do additional inputs improve profitability?</h2>
+    <p>Tracked across four measures: cost per system, revenue per system, net return, and the impact on smallholder livelihoods.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Approach</div>
+    <h2>How the numbers were calculated</h2>
+    <p>Because the dataset covers one production cycle, discounted metrics like NPV and IRR weren't appropriate here. The analysis instead relies on three standard CBA indicators.</p>
+    <table class="formula">
+      <tr><th>Metric</th><th>Formula</th></tr>
+      <tr><td>Net benefit</td><td>Total revenue − total cost</td></tr>
+      <tr><td>Return on investment (ROI)</td><td>(Net benefit ÷ total cost) × 100</td></tr>
+      <tr><td>Benefit–cost ratio (BCR)</td><td>Revenue ÷ total cost</td></tr>
+    </table>
+
+    <p style="margin-top:28px;">The analysis holds several factors constant: a fixed market price of ₦200/kg, one production cycle, stable labour costs, average weather, no post-harvest losses, and no inflation or price volatility.</p>
+  </div>
+</section>
+
+<section style="padding-bottom:0; border-bottom:none;">
+  <div class="wide">
+    <div class="wrap" style="max-width:none; padding:0;">
+      <div class="eyebrow">Cost structure</div>
+      <h2>Integrated costs 23% more to run</h2>
+    </div>
+    <div class="compare">
+      <div class="col col-organic">
+        <h3>Organic</h3>
+        <table class="data">
+          <tr><td>Land</td><td>₦5,000</td></tr>
+          <tr><td>Manure</td><td>₦25,000</td></tr>
+          <tr><td>Labour</td><td>₦10,000</td></tr>
+          <tr><td>Seeds &amp; misc.</td><td>₦1,700</td></tr>
+          <tr class="total"><td>Total production cost</td><td>₦41,700</td></tr>
+        </table>
+      </div>
+      <div class="col col-integrated">
+        <h3>Integrated</h3>
+        <table class="data">
+          <tr><td>Land</td><td>₦5,000</td></tr>
+          <tr><td>Fertiliser</td><td>₦6,000</td></tr>
+          <tr><td>Pesticide</td><td>₦3,750</td></tr>
+          <tr><td>Manure</td><td>₦25,000</td></tr>
+          <tr><td>Labour</td><td>₦10,000</td></tr>
+          <tr><td>Seeds &amp; misc.</td><td>₦1,700</td></tr>
+          <tr class="total"><td>Total production cost</td><td>₦51,450</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="wrap" style="max-width:none; padding:0 28px;">
+      <div class="totalbar-block">
+        <div class="totalbar-row">
+          <div class="lbl"><span>Organic</span><span>₦41,700</span></div>
+          <div class="totalbar-track"><div class="totalbar-fill organic" style="width:81%"></div></div>
+        </div>
+        <div class="totalbar-row">
+          <div class="lbl"><span>Integrated</span><span>₦51,450</span></div>
+          <div class="totalbar-track"><div class="totalbar-fill integrated" style="width:100%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wide">
+    <div class="wrap" style="max-width:none; padding:0; padding-top:56px;">
+      <div class="eyebrow">Production performance</div>
+      <h2>Organic yielded 19% more (250kg vs 210kg)</h2>
+    </div>
+    <div class="compare">
+      <div class="col col-organic">
+        <h3>Organic</h3>
+        <table class="data">
+          <tr><td>Amaranth — 150kg</td><td>₦30,000</td></tr>
+          <tr><td>Corchorus — 100kg</td><td>₦20,000</td></tr>
+          <tr class="total"><td>Total — 250kg</td><td>₦50,000</td></tr>
+        </table>
+      </div>
+      <div class="col col-integrated">
+        <h3>Integrated</h3>
+        <table class="data">
+          <tr><td>Amaranth — 120kg</td><td>₦24,000</td></tr>
+          <tr><td>Corchorus — 90kg</td><td>₦18,000</td></tr>
+          <tr class="total"><td>Total — 210kg</td><td>₦42,000</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Economic performance</div>
+    <h2>Net benefit</h2>
+
+    <div class="diverge-row">
+      <span class="diverge-label organic">Organic</span>
+      <div class="diverge-track">
+        <div class="diverge-left"></div>
+        <div class="diverge-right"><div class="diverge-bar organic" style="width:87.8%"></div></div>
+      </div>
+      <span class="diverge-value">+₦8,300</span>
+    </div>
+    <div class="diverge-row">
+      <span class="diverge-label integrated">Integrated</span>
+      <div class="diverge-track">
+        <div class="diverge-left"><div class="diverge-bar integrated" style="width:100%"></div></div>
+        <div class="diverge-right"></div>
+      </div>
+      <span class="diverge-value">−₦9,450</span>
+    </div>
+    <div class="roi-zero-label"><span></span><span>₦0</span><span></span></div>
+
+    <table class="summary">
+      <tr><th></th><th class="organic">Organic</th><th class="integrated">Integrated</th></tr>
+      <tr><td>Total cost</td><td>₦41,700</td><td>₦51,450</td></tr>
+      <tr><td>Total revenue</td><td>₦50,000</td><td>₦42,000</td></tr>
+      <tr><td>Net benefit</td><td class="strong">₦8,300</td><td class="strong">−₦9,450</td></tr>
+      <tr><td>ROI</td><td class="strong">19.9%</td><td class="strong">−18.4%</td></tr>
+      <tr><td>Benefit–cost ratio</td><td class="strong">1.20</td><td class="strong">0.82</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Key findings</div>
+    <h2>Higher spend didn't buy a higher return</h2>
+    <div class="findings">
+      <div>
+        <h3 class="organic-h">Organic</h3>
+        <ul>
+          <li>Lower production costs</li>
+          <li>Positive return on investment</li>
+          <li>Higher cost efficiency</li>
+          <li>Profitable under baseline assumptions</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="integrated-h">Integrated</h3>
+        <ul>
+          <li>Higher production costs</li>
+          <li>Extra fertiliser and pesticide spend wasn't offset by higher yields</li>
+          <li>Negative financial return</li>
+          <li>Lower investment efficiency</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Business impact</div>
+    <p class="lede">Integrated spent ₦9,750 more per plot and produced 40kg less.</p>
+    <p>Fertiliser and pesticide spend didn't convert into yield. Integrated cost went up 23%, output went down 16%, and revenue fell ₦8,000 short of organic. That flips ROI from +19.9% to −18.4%.</p>
+    <blockquote>Input volume up. Output down. Profit negative.</blockquote>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Sensitivity analysis</div>
+    <h2>Organic stays profitable under both shock scenarios</h2>
+    <div class="findings">
+      <div>
+        <h3>20% drop in market price</h3>
+        <p>Organic remains profitable. Integrated's losses widen further.</p>
+      </div>
+      <div>
+        <h3>30% rise in manure cost</h3>
+        <p>Organic profitability declines but stays positive. Integrated becomes increasingly unprofitable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Recommendations</div>
+    <h2>Input volume is a weak proxy for profitability</h2>
+    <p>Cutting unnecessary spend moved the needle more than adding inputs did. Priorities for decision-makers:</p>
+    <ul>
+      <li>Efficient resource allocation</li>
+      <li>Input optimisation</li>
+      <li>Cost management</li>
+      <li>Support for low-capital farming systems</li>
+      <li>Sustainable nutrient management practices</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Sustainable Development Goals</div>
+    <table class="sdg">
+      <tr><td>SDG 2 — Zero Hunger</td><td>Supports sustainable agricultural productivity</td></tr>
+      <tr><td>SDG 8 — Decent Work &amp; Economic Growth</td><td>Improves farm profitability and livelihoods</td></tr>
+      <tr><td>SDG 12 — Responsible Consumption &amp; Production</td><td>Encourages efficient resource use</td></tr>
+      <tr><td>SDG 15 — Life on Land</td><td>Promotes environmentally sustainable farming practices</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Assumptions &amp; risks</div>
+    <ul>
+      <li>Reflects a single production season. Results may vary across different weather, pest, or market conditions over multiple cycles.</li>
+      <li>NPV and IRR were excluded, so longer-term effects, like cumulative soil health gains under organic or long-run pesticide resistance under integrated, aren't captured.</li>
+      <li>The fixed ₦200/kg price for both systems doesn't account for potential organic price premiums, which could favour organic further in practice.</li>
+      <li>Based on a single farm/plot comparison, so it's indicative rather than statistically generalisable.</li>
+      <li>Post-harvest losses were excluded from both systems; differing loss rates between them would affect relative profitability.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Bottom line</div>
+    <p class="lede">Under the baseline assumptions, organic generated the stronger financial outcome across the metrics tested.</p>
+  </div>
+</section>
+
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <div class="eyebrow">Tools &amp; skills</div>
+    <ul class="tools-list">
+      <li>Cost–benefit analysis</li>
+      <li>Agricultural economics</li>
+      <li>Financial analysis</li>
+      <li>Economic evaluation</li>
+      <li>Microsoft Excel</li>
+      <li>Data interpretation</li>
+      <li>Evidence-based policy analysis</li>
+      <li>Sustainability assessment</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="name">Lauren Akhidenor</div>
+  </div>
+</footer>
+
+</body>
+</html>
